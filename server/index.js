@@ -6,7 +6,8 @@ import compress from 'compression'
 import helmet from 'helmet'
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-
+// * ###################################################
+import { userRoute } from "./routes/userRoutes.js";
 
 const app = express()
 
@@ -30,7 +31,5 @@ mongoose.connect(process.env.mongoUrl, {
     .catch((error) => console.log(`${error} did not connect`))
 
 
-app.use('/', (req, res)=>{
-    res.status(200).send('Hello!')
-})
+app.use('/api', userRoute);
 
