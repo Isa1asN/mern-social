@@ -8,6 +8,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 // * ###################################################
 import { userRoute } from "./routes/userRoutes.js";
+import { authRoute } from "./routes/authRoutes.js";
 
 const app = express()
 
@@ -30,6 +31,7 @@ mongoose.connect(process.env.mongoUrl, {
     app.listen(PORT, ()=> console.log(`Server runnning on port: ${PORT}`))})
     .catch((error) => console.log(`${error} did not connect`))
 
-
+// * ########################################################
 app.use('/api', userRoute);
+app.use('/auth', authRoute);
 
